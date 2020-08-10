@@ -172,6 +172,7 @@ These items are very high level right now. Further discussion and proper roadmap
 - [ ] Add a code of conduct.
 - [ ] Add a contributing guide.
 - [ ] Create a feature roadmap.
+- [ ] Expose functions to help add a price update into the order book. Something like `(book: Book, change: Change) => Book`, but possibly a class to maintain the book prices in a tree for efficient insert and deletes. See [bintrees](https://www.npmjs.com/package/bintrees), and the RBTree.
 - [ ] Allow for a custom end color during color interpolation.
 - [ ] Add renderer props for various parts of the component structure (e.g., `rowRenderer`).
 - [ ] Add formatters for price and size, allow custom formatting.
