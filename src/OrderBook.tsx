@@ -1,7 +1,6 @@
+import Big from 'big.js';
 import classnames from 'classnames';
 import React from 'react';
-
-import { Root, List } from './OrderBook.styles';
 
 type PriceList = string[][];
 type RgbColor = number[]; // [number, number, number];
@@ -78,8 +77,13 @@ const renderList = (
     stylePrefix,
   }: RenderListOptions,
 ) => {
+  const style = {
+    display: 'flex',
+    flexDirection: reverse ? 'column-reverse' : 'column',
+  };
+
   return (
-    <List reverse={reverse} className={`${stylePrefix}__list`}>
+    <ol style={style} className={`${stylePrefix}__list`}>
       {list.map(([price, size], index) => {
         const scaleFactor = index / (list.length - 1);
         const rgb = interpolateColorProp(color, [255, 255, 255], scaleFactor).join();
@@ -100,7 +104,7 @@ const renderList = (
           </li>
         );
       })}
-    </List>
+    </ol>
   );
 };
 
@@ -130,14 +134,19 @@ export const OrderBook = ({
   stylePrefix = defaultProps.stylePrefix,
 }: Props) => {
   const { bids, asks } = book;
-  const spread = rawSpread ?? parseFloat(asks[0][0]) - parseFloat(bids[0][0]); // todo - this sucks
+  // TODO (brianmcallister) - This is not a good way to handle this calculation.
+  const spread = rawSpread ?? new Big(asks[0][0]).minus(new Big(bids[0][0])).toString(); // parseFloat(asks[0][0]) - parseFloat(bids[0][0]);
   const cls = classnames(stylePrefix);
   const limitedAsks = asks.slice(0, listLength);
   const limitedBids = bids.slice(0, listLength);
   const reverse = layout !== Layout.Row;
+  const style = {
+    display: 'flex',
+    flexDirection: layout === Layout.Row ? 'row-reverse' : 'column',
+  };
 
   return (
-    <Root layout={layout} className={cls}>
+    <div style={style} className={cls}>
       <div className={`${stylePrefix}__side ${stylePrefix}__side--asks`}>
         {showHeaders && <p className={`${stylePrefix}__side-header`}>Ask</p>}
         {renderList(limitedAsks, {
@@ -167,7 +176,7 @@ export const OrderBook = ({
           stylePrefix,
         })}
       </div>
-    </Root>
+    </div>
   );
 };
 
