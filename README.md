@@ -114,13 +114,15 @@ export interface Props {
   // For the internaly calculated colors, apply a background-color in the DOM.
   applyBackgroundColor?: boolean;
   // Base color for the asks list.
+  // Default: [235, 64, 52]
   askColor?: RgbColor;
   // Base color for the bids list.
+  // Default: [0, 216, 101]
   bidColor?: RgbColor;
   // Order book object.
   book: OrderBook;
   // Use a value of 1 for the opacity of each row's generated color.
-  fullOpacity: boolean;
+  fullOpacity?: boolean;
   // Color interpolator function.
   interpolateColor?: Interpolator;
   // Various layout options.
@@ -134,6 +136,7 @@ export interface Props {
   // Provide a custom spread value instead of letting OrderBook calculate it.
   spread?: string;
   // Prefix for the CSS class name in the DOM.
+  // Default: 'rob_OrderBook'
   stylePrefix?: string;
 }
 ```

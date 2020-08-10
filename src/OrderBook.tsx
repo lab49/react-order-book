@@ -30,7 +30,7 @@ export interface Props {
   // Order book object.
   book: OrderBook;
   // Use a value of 1 for the opacity of each row's generated color.
-  fullOpacity: boolean;
+  fullOpacity?: boolean;
   // Color interpolator function.
   interpolateColor?: Interpolator;
   // Various layout options.
@@ -105,16 +105,10 @@ const renderList = (
 };
 
 const defaultProps = {
-  applyBackgroundColor: false,
   askColor: [235, 64, 52] as RgbColor,
   bidColor: [0, 216, 101] as RgbColor,
-  fullOpacity: false,
   interpolateColor,
-  layout: undefined,
-  listLength: undefined,
-  showHeaders: false,
   showSpread: true,
-  spread: undefined,
   stylePrefix: 'rob_OrderBook',
 };
 
@@ -122,15 +116,15 @@ const defaultProps = {
  * OrderBook component.
  */
 export const OrderBook = ({
-  applyBackgroundColor = defaultProps.applyBackgroundColor,
+  applyBackgroundColor,
   askColor = defaultProps.askColor,
   bidColor = defaultProps.bidColor,
   book,
-  fullOpacity = defaultProps.fullOpacity,
+  fullOpacity,
   interpolateColor: interpolateColorProp = defaultProps.interpolateColor,
   layout,
   listLength,
-  showHeaders = defaultProps.showHeaders,
+  showHeaders,
   showSpread = defaultProps.showSpread,
   spread: rawSpread,
   stylePrefix = defaultProps.stylePrefix,
