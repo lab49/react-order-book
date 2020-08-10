@@ -21,17 +21,29 @@ export enum Layout {
 }
 
 export interface Props {
+  // For the internaly calculated colors, apply a background-color in the DOM.
   applyBackgroundColor?: boolean;
+  // Base color for the asks list.
   askColor?: RgbColor;
+  // Base color for the bids list.
   bidColor?: RgbColor;
+  // Order book object.
   book: OrderBook;
+  // Use a value of 1 for the opacity of each row's generated color.
   fullOpacity: boolean;
+  // Color interpolator function.
   interpolateColor?: Interpolator;
+  // Various layout options.
   layout?: Layout;
+  // Limit the length of the rendered bids and asks.
   listLength?: number;
+  // Show column headers.
   showHeaders?: boolean;
+  // Show the spread.
   showSpread?: boolean;
+  // Provide a custom spread value instead of letting OrderBook calculate it.
   spread?: string;
+  // Prefix for the CSS class name in the DOM.
   stylePrefix?: string;
 }
 
@@ -78,7 +90,7 @@ const renderList = (
             className={`${stylePrefix}__list-item`}
             key={price}
             style={{
-              backgroundColor: applyBackgroundColor ? backgroundColor : null,
+              backgroundColor: applyBackgroundColor ? backgroundColor : undefined,
               '--row-color': backgroundColor,
             }}
           >

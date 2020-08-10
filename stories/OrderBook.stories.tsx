@@ -18,7 +18,7 @@ export const Default = () => {
 };
 
 export const LimitedSize = () => {
-  return <OrderBook book={{ bids: book.bids, asks: book.asks }} listLength={10} />;
+  return <OrderBook book={{ bids: book.bids, asks: book.asks }} listLength={5} />;
 };
 
 export const RowLayout = () => {
