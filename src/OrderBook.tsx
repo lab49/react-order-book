@@ -134,8 +134,7 @@ export const OrderBook = ({
   stylePrefix = defaultProps.stylePrefix,
 }: Props) => {
   const { bids, asks } = book;
-  // TODO (brianmcallister) - This is not a good way to handle this calculation.
-  const spread = rawSpread ?? new Big(asks[0][0]).minus(new Big(bids[0][0])).toString(); // parseFloat(asks[0][0]) - parseFloat(bids[0][0]);
+  const spread = rawSpread ?? new Big(asks[0][0]).minus(new Big(bids[0][0])).toString();
   const cls = classnames(stylePrefix);
   const limitedAsks = asks.slice(0, listLength);
   const limitedBids = bids.slice(0, listLength);
