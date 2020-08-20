@@ -79,7 +79,7 @@ const renderList = (
 ) => {
   const style = {
     display: 'flex',
-    flexDirection: reverse ? 'column-reverse' : 'column',
+    flexDirection: reverse ? ('column-reverse' as const) : ('column' as const),
   };
 
   return (
@@ -88,16 +88,13 @@ const renderList = (
         const scaleFactor = index / (list.length - 1);
         const rgb = interpolateColorProp(color, [255, 255, 255], scaleFactor).join();
         const backgroundColor = `rgba(${rgb}, ${fullOpacity ? 1 : 1 - scaleFactor})`;
+        const rowStyle = {
+          backgroundColor: applyBackgroundColor ? backgroundColor : undefined,
+          '--row-color': backgroundColor,
+        };
 
         return (
-          <li
-            className={`${stylePrefix}__list-item`}
-            key={price}
-            style={{
-              backgroundColor: applyBackgroundColor ? backgroundColor : undefined,
-              '--row-color': backgroundColor,
-            }}
-          >
+          <li className={`${stylePrefix}__list-item`} key={price} style={rowStyle}>
             <span className={`${stylePrefix}__price`}>{price}</span>
 
             <span className={`${stylePrefix}__size`}>{size}</span>
