@@ -105,30 +105,22 @@ const renderList = (
   );
 };
 
-const defaultProps = {
-  askColor: [235, 64, 52] as RgbColor,
-  bidColor: [0, 216, 101] as RgbColor,
-  interpolateColor,
-  showSpread: true,
-  stylePrefix: 'rob_OrderBook',
-};
-
 /**
  * OrderBook component.
  */
 export const OrderBook = ({
   applyBackgroundColor,
-  askColor = defaultProps.askColor,
-  bidColor = defaultProps.bidColor,
+  askColor = [235, 64, 52],
+  bidColor = [0, 216, 101],
   book,
   fullOpacity,
-  interpolateColor: interpolateColorProp = defaultProps.interpolateColor,
+  interpolateColor: interpolateColorProp = interpolateColor,
   layout,
   listLength,
   showHeaders,
-  showSpread = defaultProps.showSpread,
+  showSpread = true,
   spread: rawSpread,
-  stylePrefix = defaultProps.stylePrefix,
+  stylePrefix = 'rob_OrderBook',
 }: Props) => {
   const { bids, asks } = book;
   const spread = rawSpread ?? new Big(asks[0][0]).minus(new Big(bids[0][0])).toString();
@@ -175,5 +167,3 @@ export const OrderBook = ({
     </div>
   );
 };
-
-OrderBook.defaultProps = defaultProps;
