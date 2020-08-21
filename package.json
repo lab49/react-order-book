@@ -17,6 +17,9 @@
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/OrderBook.tsx",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "npm run storybook",
@@ -40,11 +43,12 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
-    "@storybook/addon-docs": "^5.3.19",
-    "@storybook/addons": "^5.3.19",
+    "@storybook/addon-docs": "^6.0.16",
+    "@storybook/addon-essentials": "^6.0.16",
+    "@storybook/addons": "^6.0.16",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/preset-typescript": "^3.0.0",
-    "@storybook/react": "^5.3.19",
+    "@storybook/react": "^6.0.16",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -80,9 +84,5 @@
     "react-dom": "^16.13.1",
     "ts-loader": "^8.0.2",
     "typescript": "^3.9.7"
-  },
-  "files": [
-    "dist"
-  ],
-  "dependencies": {}
+  }
 }

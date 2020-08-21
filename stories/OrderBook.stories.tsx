@@ -1,6 +1,8 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { OrderBook, Layout } from '../src/OrderBook';
+import { OrderBook, Props, Layout } from '../src/OrderBook';
 import pkg from '../package.json';
 
 import book from './book';
@@ -11,106 +13,147 @@ export default {
   parameters: {
     componentSubtitle: pkg.description,
   },
+  argTypes: {
+    listLength: {
+      defaultValue: 10,
+      description: 'Control how many rows of data appear',
+      control: {
+        type: 'range',
+        min: 2,
+        max: 20,
+      },
+    },
+    // askColor: { control: 'color' },
+    // bidColor: { control: 'color' },
+  },
+} as Meta;
+
+const preparedBids = book.bids.slice(0, 15);
+const preparedAsks = book.asks.slice(0, 15);
+const colorRegex = /\d{1,3}/g;
+
+const parseColor = (color: string | number[]) => {
+  if (Array.isArray(color)) {
+    return color;
+  }
+
+  return color
+    .match(colorRegex)
+    .slice(0, 3)
+    .map((item) => parseInt(item, 10));
 };
 
-export const Default = () => {
-  return <OrderBook book={{ bids: book.bids.slice(0, 15), asks: book.asks.slice(0, 15) }} />;
+const Template: Story<Props> = (args) => {
+  const props = {
+    listLength: 10,
+    ...args,
+    // Parse the color args.
+    askColor: parseColor(args.askColor),
+    bidColor: parseColor(args.bidColor),
+  };
+
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  return <OrderBook book={{ bids: preparedBids, asks: preparedAsks }} {...props} />;
 };
 
-export const LimitedSize = () => {
-  return <OrderBook book={{ bids: book.bids, asks: book.asks }} listLength={5} />;
+export const Default = Template.bind({});
+
+// export const StreamingData = () => {
+//   return <OrderBook book={{ bids: book.bids, asks: book.asks }} />;
+// };
+
+export const LimitedSize = Template.bind({});
+
+LimitedSize.args = {
+  listLength: 5,
 };
 
-export const RowLayout = () => {
-  return (
-    <OrderBook book={{ bids: book.bids, asks: book.asks }} listLength={10} layout={Layout.Row} />
-  );
+export const RowLayout = Template.bind({});
+
+RowLayout.args = {
+  layout: Layout.Row,
 };
 
-export const WithHeaders = () => {
-  return <OrderBook book={{ bids: book.bids, asks: book.asks }} listLength={10} showHeaders />;
+export const WithHeaders = Template.bind({});
+
+WithHeaders.args = {
+  showHeaders: true,
 };
 
-export const WithoutSpread = () => {
-  return (
-    <OrderBook book={{ bids: book.bids, asks: book.asks }} listLength={10} showSpread={false} />
-  );
+export const WithoutSpread = Template.bind({});
+
+WithoutSpread.args = {
+  showSpread: false,
 };
 
-export const WithCustomSpread = () => {
-  return <OrderBook book={{ bids: book.bids, asks: book.asks }} listLength={10} spread="👋" />;
+export const WithCustomSpread = Template.bind({});
+
+WithCustomSpread.args = {
+  spread: '👋',
 };
 
-WithCustomSpread.story = {
-  parameters: {
-    docs: {
-      storyDescription: `OrderBook
-      attempts to calculate the spread by subtracting the top of the
-      bids from the top of the asks. If you want to provide your own spread value,
-      you can use the \`spread\` prop to do it.
+WithCustomSpread.parameters = {
+  docs: {
+    description: {
+      story: `OrderBook
+        attempts to calculate the spread by subtracting the top of the
+        bids from the top of the asks. If you want to provide your own spread value,
+        you can use the \`spread\` prop to do it.
       `,
     },
   },
 };
 
-export const WithColors = () => {
-  return (
-    <OrderBook book={{ bids: book.bids, asks: book.asks }} listLength={10} applyBackgroundColor />
-  );
+export const WithColors = Template.bind({});
+
+WithColors.args = {
+  applyBackgroundColor: true,
 };
 
-WithColors.story = {
-  parameters: {
-    docs: {
-      storyDescription: `This
-      is where things get interesting. OrderBook can calculate colors
-      per row of each side of the book. Also, OrderBook will create
-      a CSS variable called \`--row-color\`, which you can use to write
-      custom styles that take advantage of that color. However, there's
-      also a handy \`applyBackgroundColor\` prop that you can use to
-      let OrderBook set an inline background-color property for you.
-      <br /><br />
-      Although that's the only property OrderBook will set, you can still
-      use the CSS variable to use each row color in interesting ways, which
-      we'll explore in later stories.
+WithColors.parameters = {
+  docs: {
+    description: {
+      story: `This
+        is where things get interesting. OrderBook can calculate colors
+        per row of each side of the book. Also, OrderBook will create
+        a CSS variable called \`--row-color\`, which you can use to write
+        custom styles that take advantage of that color. However, there's
+        also a handy \`applyBackgroundColor\` prop that you can use to
+        let OrderBook set an inline background-color property for you.
+        <br /><br />
+        Although that's the only property OrderBook will set, you can still
+        use the CSS variable to use each row color in interesting ways, which
+        we'll explore in later stories.
       `,
     },
   },
 };
 
-export const WithFullOpacity = () => {
-  return (
-    <OrderBook
-      applyBackgroundColor
-      book={{ bids: book.bids, asks: book.asks }}
-      fullOpacity
-      listLength={10}
-    />
-  );
+export const WithFullOpacity = Template.bind({});
+
+WithFullOpacity.args = {
+  applyBackgroundColor: true,
+  fullOpacity: true,
 };
 
-WithFullOpacity.story = {
-  parameters: {
-    docs: {
-      storyDescription: `By
-      default, the colors generated by OrderBook set the opacity
-      argument of the rgba CSS function. You can disable this
-      with the \`fullOpacity\` prop.
+WithFullOpacity.parameters = {
+  docs: {
+    description: {
+      story: `By
+        default, the colors generated by OrderBook set the opacity
+        argument of the rgba CSS function. You can disable this
+        with the \`fullOpacity\` prop.
       `,
     },
   },
 };
 
-export const WithCustomColors = () => {
-  return (
-    <OrderBook
-      applyBackgroundColor
-      askColor={[255, 255, 0]}
-      bidColor={[0, 255, 255]}
-      book={{ bids: book.bids, asks: book.asks }}
-      listLength={10}
-    />
-  );
+export const WithCustomColors = Template.bind({});
+
+WithCustomColors.args = {
+  applyBackgroundColor: true,
+  askColor: [255, 255, 0],
+  bidColor: [0, 255, 255],
 };
 
 export const WritingCustomStyles = () => {
@@ -162,10 +205,6 @@ export const CustomColorInterpolation = () => {
     </div>
   );
 };
-
-// export const StreamingData = () => {
-//   return <OrderBook book={{ bids: book.bids, asks: book.asks }} />;
-// };
 
 export const MakeItNice = () => {
   return (
