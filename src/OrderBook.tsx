@@ -3,7 +3,9 @@ import classnames from 'classnames';
 import React from 'react';
 
 type PriceList = string[][];
-type RgbColor = number[]; // [number, number, number];
+// This would be [number, number, number], but:
+// See: https://github.com/microsoft/TypeScript/issues/6574
+type RgbColor = number[];
 type Interpolator = (
   start: RenderListOptions['color'],
   end: RenderListOptions['color'],
@@ -107,6 +109,21 @@ const renderList = (
 
 /**
  * OrderBook component.
+ *
+ * `react-order-book` is a simple, flexible order book rendering component.
+ * Pass in an order book as a prop, and cutomize the look and feel with plenty
+ * of configuration props, plus numerous styling hooks for visual customization.
+ *
+ * `react-order-book` tries to be extremely unopinionated about styling,
+ * and as such, includes very little actual style rules. There's plenty of
+ * examples in the included demo website that show how you can use the
+ * rendered class names to create your own beautiful experiences.
+ *
+ * This component is perfect for:
+ *
+ * - Trading platforms
+ * - Order entry systems
+ * - Dashboards
  */
 export const OrderBook = ({
   applyBackgroundColor,
