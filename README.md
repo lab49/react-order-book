@@ -88,6 +88,8 @@ As discussed above, there are a number of classnames you can use to add your own
 ```ts
 <OrderBook book={book} />
 
+// Will render...
+
 <div class="rob_OrderBook">
   <div class="rob_OrderBook__side rob_OrderBook__side--asks">
     // ...more content
@@ -105,7 +107,13 @@ As discussed above, there are a number of classnames you can use to add your own
 
 ### `OrderBook`
 
-This is the only named export, and is a `(props: Props) => JSX.Element`. See the props below.
+`<OrderBook />` is a `(props: Props) => JSX.Element`. See `Props` below for a description of the avilable props.
+
+```ts
+import { OrderBook } from '@lab49/react-order-book';
+
+const MyComponent = () => <OrderBook book={book} />;
+```
 
 ### `Props`
 
@@ -143,6 +151,8 @@ export interface Props {
 
 ### `Layout`
 
+Available layout modes. See the demo website for an example of what this looks like.
+
 ```ts
 enum Layout {
   Row = 'row'
@@ -165,7 +175,7 @@ MIT @ [Lab49](https://lab49.com)
 
 ## TODO
 
-These items are very high level right now. Further discussion and proper roadmap plannig will happen in GitHub issues and projects.
+These items are very high level right now. Further discussion and proper roadmap planning will happen in GitHub issues and projects.
 
 - [ ] Add unit tests.
 - [ ] Incorporate a CI process for publishing.
