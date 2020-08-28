@@ -4,7 +4,7 @@
 
 <img src="https://www.lab49.com/wp-content/uploads/2020/06/logo.svg" />
 
-[![codecov](https://codecov.io/gh/brianmcallister/react-order-book/branch/master/graph/badge.svg)](https://codecov.io/gh/brianmcallister/react-order-book) [![CircleCI](https://circleci.com/gh/brianmcallister/react-order-book.svg?style=svg)](https://circleci.com/gh/brianmcallister/react-order-book) [![npm version](https://img.shields.io/npm/v/@lab49/react-order-book?label=version&color=%2354C536&logo=npm)](https://www.npmjs.com/package/@lab49/react-order-book)
+[![codecov](https://codecov.io/gh/lab49/react-order-book/branch/master/graph/badge.svg)](https://codecov.io/gh/lab49/react-order-book) [![CircleCI](https://circleci.com/gh/lab49/react-order-book.svg?style=svg)](https://circleci.com/gh/lab49/react-order-book) [![npm version](https://img.shields.io/npm/v/@lab49/react-order-book?label=version&color=%2354C536&logo=npm)](https://www.npmjs.com/package/@lab49/react-order-book)
 
 > Render and style an order book for any asset class. Flexible and customizable.
 
