@@ -21,18 +21,15 @@
     "dist"
   ],
   "scripts": {
+    "build-storybook": "build-storybook",
     "build": "microbundle-crl --no-compress --format modern,cjs",
-    "start": "npm run storybook",
+    "chromatic": "npx chromatic --project-token 60pcjug3hz",
+    "lint": "eslint --ext ts,tsx src",
     "prepare": "run-s build",
-    "test": "run-s test:unit test:lint test:build",
-    "test:build": "run-s build",
-    "test:lint": "eslint --ext ts,tsx src",
-    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
-    "test:watch": "react-scripts test --env=jsdom",
-    "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build",
+    "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "storybook": "start-storybook -p 9009",
-    "build-storybook": "build-storybook"
+    "test": "jest",
+    "types": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": "^16.x",
@@ -77,6 +74,7 @@
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
     "fork-ts-checker-webpack-plugin": "^5.0.14",
+    "jest": "^26.4.2",
     "microbundle-crl": "^0.13.11",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
