@@ -206,6 +206,12 @@ export const CustomColorInterpolation = () => {
   );
 };
 
+CustomColorInterpolation.parameters = {
+  chromatic: {
+    disable: true,
+  },
+};
+
 export const MakeItNice = () => {
   return (
     <>
