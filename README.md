@@ -5,7 +5,7 @@
 <h3>&nbsp;</h3>
 <p align="center">
   <img src="/.github/react-order-book.png" width="400">
-	<p align="center">Render and style an order book for any asset class. Flexible and customizable.</p>
+  <p align="center">Render an order book for any asset class. Flexible and customizable.</p>
 </p>
 <h3>&nbsp;</h3>
 
