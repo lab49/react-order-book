@@ -22,29 +22,53 @@ export enum Layout {
 }
 
 export interface Props {
-  // For the internaly calculated colors, apply a background-color in the DOM.
+  /**
+   * For the internaly calculated colors, apply a background-color in the DOM.
+   */
   applyBackgroundColor?: boolean;
-  // Base color for the asks list.
+  /**
+   * Base color for the asks list.
+   */
   askColor?: RgbColor;
-  // Base color for the bids list.
+  /**
+   * Base color for the bids list.
+   */
   bidColor?: RgbColor;
-  // Order book object.
+  /**
+   * Order book object.
+   */
   book: OrderBook;
-  // Use a value of 1 for the opacity of each row's generated color.
+  /**
+   * Use a value of 1 for the opacity of each row's generated color.
+   */
   fullOpacity?: boolean;
-  // Color interpolator function.
+  /**
+   * Color interpolator function.
+   */
   interpolateColor?: Interpolator;
-  // Various layout options.
+  /**
+   * Various layout options.
+   */
   layout?: Layout;
-  // Limit the length of the rendered bids and asks.
+  /**
+   * Limit the length of the rendered bids and asks.
+   */
   listLength?: number;
-  // Show column headers.
+  /**
+   * Show column headers.
+   */
   showHeaders?: boolean;
-  // Show the spread.
+  /**
+   * Show the spread.
+   */
   showSpread?: boolean;
-  // Provide a custom spread value instead of letting OrderBook calculate it.
+  /**
+   * Provide a custom spread value instead of letting OrderBook calculate it.
+   */
   spread?: string;
-  // Prefix for the CSS class name in the DOM.
+  /**
+   * Prefix for the CSS class name in the DOM.
+   */
   stylePrefix?: string;
 }
 
@@ -110,14 +134,16 @@ const renderList = (
 /**
  * OrderBook component.
  *
- * `react-order-book` is a simple, flexible order book rendering component.
- * Pass in an order book as a prop, and cutomize the look and feel with plenty
- * of configuration props, plus numerous styling hooks for visual customization.
+ * `react-order-book` is a simple, flexible order book component.
+ * Pass in an order book as a prop, and cutomize the look and feel
+ * with plenty of configuration options, plus numerous styling hooks
+ * for visual customization.
  *
- * `react-order-book` tries to be extremely unopinionated about styling,
- * and as such, includes very little actual style rules. There's plenty of
- * examples in the included demo website that show how you can use the
- * rendered class names to create your own beautiful experiences.
+ * `react-order-book` tries to be extremely unopinionated about
+ * styling, and as such, includes very little actual style rules.
+ * There's plenty of examples in the included demo website that show
+ * how you can use the rendered class names to create your own
+ * beautiful experiences.
  *
  * This component is perfect for:
  *
