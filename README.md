@@ -1,14 +1,15 @@
 # @lab49/react-order-book
 
-> Sponsored by Lab49
-
-<img src="https://www.lab49.com/wp-content/uploads/2020/06/logo.svg" />
-
 [![codecov](https://codecov.io/gh/lab49/react-order-book/branch/master/graph/badge.svg)](https://codecov.io/gh/lab49/react-order-book) [![CircleCI](https://circleci.com/gh/lab49/react-order-book.svg?style=svg)](https://circleci.com/gh/lab49/react-order-book) [![npm version](https://img.shields.io/npm/v/@lab49/react-order-book?label=version&color=%2354C536&logo=npm)](https://www.npmjs.com/package/@lab49/react-order-book)
 
-> Render and style an order book for any asset class. Flexible and customizable.
+<h3>&nbsp;</h3>
+<p align="center">
+  <img src="/.github/react-order-book.png" width="400">
+	<p align="center">Render and style an order book for any asset class. Flexible and customizable.</p>
+</p>
+<h3>&nbsp;</h3>
 
-`react-order-book` is a simple, flexible order book rendering component. Pass in an order book as a prop, and cutomize the look and feel with plenty of configuration props, plus numerous styling hooks for visual customization.
+`react-order-book` is a simple, flexible order book component. Pass in an order book as a prop, and cutomize the look and feel with plenty of configuration options, plus numerous styling hooks for visual customization.
 
 `react-order-book` tries to be extremely unopinionated about styling, and as such, includes very little actual style rules. There's plenty of examples in the included demo website that show how you can use the rendered class names to create your own beautiful experiences.
 
@@ -85,7 +86,7 @@ const book = {
 
 As discussed above, there are a number of classnames you can use to add your own styles. There is an example of doing exactly that in the included [Storybook](./stories/OrderBook.stories.tsx). There's too many to list out, but by default, all DOM nodes have a classname prefixed with `rob_OrderBook`. As an example:
 
-```ts
+```tsx
 <OrderBook book={book} />
 
 // Will render...
@@ -109,7 +110,7 @@ As discussed above, there are a number of classnames you can use to add your own
 
 `<OrderBook />` is a `(props: Props) => JSX.Element`. See `Props` below for a description of the avilable props.
 
-```ts
+```tsx
 import { OrderBook } from '@lab49/react-order-book';
 
 const MyComponent = () => <OrderBook book={book} />;
@@ -118,33 +119,54 @@ const MyComponent = () => <OrderBook book={book} />;
 ### `Props`
 
 ```ts
-export interface Props {
-  // For the internaly calculated colors, apply a background-color in the DOM.
+interface Props {
+  /**
+   * For the internaly calculated colors, apply a background-color in the DOM.
+   */
   applyBackgroundColor?: boolean;
-  // Base color for the asks list.
-  // Default: [235, 64, 52]
+  /**
+   * Base color for the asks list.
+   */
   askColor?: RgbColor;
-  // Base color for the bids list.
-  // Default: [0, 216, 101]
+  /**
+   * Base color for the bids list.
+   */
   bidColor?: RgbColor;
-  // Order book object.
+  /**
+   * Order book object.
+   */
   book: OrderBook;
-  // Use a value of 1 for the opacity of each row's generated color.
+  /**
+   * Use a value of 1 for the opacity of each row's generated color.
+   */
   fullOpacity?: boolean;
-  // Color interpolator function.
+  /**
+   * Color interpolator function.
+   */
   interpolateColor?: Interpolator;
-  // Various layout options.
+  /**
+   * Various layout options.
+   */
   layout?: Layout;
-  // Limit the length of the rendered bids and asks.
+  /**
+   * Limit the length of the rendered bids and asks.
+   */
   listLength?: number;
-  // Show column headers.
+  /**
+   * Show column headers.
+   */
   showHeaders?: boolean;
-  // Show the spread.
+  /**
+   * Show the spread.
+   */
   showSpread?: boolean;
-  // Provide a custom spread value instead of letting OrderBook calculate it.
+  /**
+   * Provide a custom spread value instead of letting OrderBook calculate it.
+   */
   spread?: string;
-  // Prefix for the CSS class name in the DOM.
-  // Default: 'rob_OrderBook'
+  /**
+   * Prefix for the CSS class name in the DOM.
+   */
   stylePrefix?: string;
 }
 ```
@@ -187,3 +209,9 @@ These items are very high level right now. Further discussion and proper roadmap
 - [ ] Allow for a custom end color during color interpolation.
 - [ ] Add renderer props for various parts of the component structure (e.g., `rowRenderer`).
 - [ ] Add formatters for price and size, allow custom formatting.
+
+## Sponsored by Lab49
+
+<a href="https://lab49.com">
+  <img src="https://www.lab49.com/wp-content/uploads/2020/06/logo.svg" />
+</a>
