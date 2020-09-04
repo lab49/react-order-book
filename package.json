@@ -1,10 +1,14 @@
 {
   "name": "@lab49/react-order-book",
   "version": "0.1.0",
-  "description": "Order book.",
+  "description": "Render an order book for any asset class. Flexible and customizable.",
   "author": "brianmcallister",
   "license": "MIT",
   "repository": "@lab49/react-order-book",
+  "bugs": {
+    "url": "https://github.com/lab49/react-order-book/issues"
+  },
+  "homepage": "https://github.com/lab49/react-order-book",
   "keywords": [
     "react",
     "finance",
