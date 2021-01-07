@@ -201,6 +201,7 @@ These items are very high level right now. Further discussion and proper roadmap
 
 - [ ] Add unit tests.
 - [ ] Incorporate a CI process for publishing.
+- [ ] Add lint-staged to maintain quality.
 - [ ] Add a code of conduct.
 - [ ] Add a contributing guide.
 - [ ] Create a feature roadmap.
