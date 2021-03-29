@@ -28,7 +28,8 @@
     "build-storybook": "build-storybook",
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "chromatic": "npx chromatic --project-token 60pcjug3hz",
-    "lint": "eslint --ext ts,tsx src",
+    "lint123": "eslint --ext ts,tsx src",
+    "lint": "eslint --fix",
     "prepare": "npm run build",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "storybook": "start-storybook -p 9009",
@@ -37,8 +38,16 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
   },
   "peerDependencies": {
     "react": "^16.x",
@@ -83,6 +92,7 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "husky": "^4.3.8",
     "jest": "^26.4.2",
+    "lint-staged": "^10.5.4",
     "microbundle-crl": "^0.13.11",
     "prettier": "^2.0.4",
     "react": "^16.13.1",
