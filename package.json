@@ -76,6 +76,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
+    "husky": "^4.3.8",
     "jest": "^26.4.2",
     "microbundle-crl": "^0.13.11",
     "prettier": "^2.0.4",
