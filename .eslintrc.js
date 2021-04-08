@@ -22,6 +22,7 @@ module.exports = {
     'prettier/prettier': 2,
     'import/prefer-default-export': 0,
     'import/no-default-export': 2,
+    "react/jsx-props-no-spreading": "off",
   },
   overrides: [
     {

@@ -109,7 +109,7 @@ const renderList = (
   };
 
   return (
-    <ol style={style} className={`${stylePrefix}__list`}>
+    <ol data-testid={`${stylePrefix}__list`} style={style} className={`${stylePrefix}__list`}>
       {list.map(([price, size], index) => {
         const scaleFactor = index / (list.length - 1);
         const rgb = interpolateColorProp(color, [255, 255, 255], scaleFactor).join();
@@ -120,7 +120,12 @@ const renderList = (
         };
 
         return (
-          <li className={`${stylePrefix}__list-item`} key={price} style={rowStyle}>
+          <li
+            data-testid={`${stylePrefix}__list-item`}
+            className={`${stylePrefix}__list-item`}
+            key={price}
+            style={rowStyle}
+          >
             <span className={`${stylePrefix}__price`}>{price}</span>
 
             <span className={`${stylePrefix}__size`}>{size}</span>
