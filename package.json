@@ -27,7 +27,7 @@
   "scripts": {
     "build-storybook": "build-storybook",
     "build": "microbundle-crl --no-compress --format modern,cjs",
-    "chromatic": "npx chromatic --project-token 60pcjug3hz",
+    "chromatic": "chromatic --project-token 60pcjug3hz",
     "lint": "eslint --ext ts,tsx src",
     "prepare": "npm run build",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
