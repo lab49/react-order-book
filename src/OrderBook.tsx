@@ -31,9 +31,17 @@ export interface Props {
    */
   askColor?: RgbColor;
   /**
+   * End color for the asks list.
+   */
+  askEndColor?: RgbColor;
+  /**
    * Base color for the bids list.
    */
   bidColor?: RgbColor;
+  /**
+   * End color for the bids list.
+   */
+  bidEndColor?: RgbColor;
   /**
    * Order book object.
    */
@@ -75,6 +83,7 @@ export interface Props {
 type RenderListOptions = Pick<Props, 'applyBackgroundColor' | 'fullOpacity' | 'stylePrefix'> & {
   interpolateColor: NonNullable<Props['interpolateColor']>;
   color: RgbColor;
+  endColor: RgbColor;
   reverse?: boolean;
 };
 
@@ -97,6 +106,7 @@ const renderList = (
   {
     applyBackgroundColor,
     color,
+    endColor,
     fullOpacity,
     interpolateColor: interpolateColorProp,
     reverse,
@@ -112,7 +122,7 @@ const renderList = (
     <ol style={style} className={`${stylePrefix}__list`}>
       {list.map(([price, size], index) => {
         const scaleFactor = index / (list.length - 1);
-        const rgb = interpolateColorProp(color, [255, 255, 255], scaleFactor).join();
+        const rgb = interpolateColorProp(color, endColor, scaleFactor).join();
         const backgroundColor = `rgba(${rgb}, ${fullOpacity ? 1 : 1 - scaleFactor})`;
         const rowStyle = {
           backgroundColor: applyBackgroundColor ? backgroundColor : undefined,
@@ -154,7 +164,9 @@ const renderList = (
 export const OrderBook = ({
   applyBackgroundColor,
   askColor = [235, 64, 52],
+  askEndColor = [255, 255, 255],
   bidColor = [0, 216, 101],
+  bidEndColor = [255, 255, 255],
   book,
   fullOpacity,
   interpolateColor: interpolateColorProp = interpolateColor,
@@ -183,6 +195,7 @@ export const OrderBook = ({
         {renderList(limitedAsks, {
           applyBackgroundColor,
           color: askColor,
+          endColor: askEndColor,
           fullOpacity,
           interpolateColor: interpolateColorProp,
           reverse,
@@ -202,6 +215,7 @@ export const OrderBook = ({
         {renderList(limitedBids, {
           applyBackgroundColor,
           color: bidColor,
+          endColor: bidEndColor,
           fullOpacity,
           interpolateColor: interpolateColorProp,
           stylePrefix,
