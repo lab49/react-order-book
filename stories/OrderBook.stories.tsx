@@ -49,7 +49,9 @@ const Template: Story<Props> = (args) => {
     ...args,
     // Parse the color args.
     askColor: parseColor(args.askColor),
+    askEndColor: parseColor(args.askEndColor),
     bidColor: parseColor(args.bidColor),
+    bidEndColor: parseColor(args.bidEndColor),
   };
 
   // eslint-disable-next-line react/jsx-props-no-spreading
@@ -153,7 +155,9 @@ export const WithCustomColors = Template.bind({});
 WithCustomColors.args = {
   applyBackgroundColor: true,
   askColor: [255, 255, 0],
+  askEndColor: [255, 255, 255],
   bidColor: [0, 255, 255],
+  bidEndColor: [255, 255, 255],
 };
 
 export const WritingCustomStyles = () => {
