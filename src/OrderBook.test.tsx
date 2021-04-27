@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-props-no-spreading */
+/* eslint react/jsx-props-no-spreading: off */
 import React from 'react';
 import { render } from '@testing-library/react';
 import { OrderBook, Props, Layout } from './OrderBook';
@@ -35,7 +35,7 @@ const propsSample: Props = {
   stylePrefix: 'test_OrderBook',
 };
 
-describe('<OrderBook />', () => {
+describe('<OrderBook functionality with different properties/>', () => {
   it('OrderBook should be rendered', () => {
     const { getByText } = render(<OrderBook {...propsSample} />);
 
@@ -55,9 +55,7 @@ describe('<OrderBook />', () => {
     expect(renderedOutput.queryByText('Bid')).toBeInTheDocument();
   });
 
-  const propsWithNoHeader = { ...propsSample };
-
-  propsWithNoHeader.showHeaders = false;
+  const propsWithNoHeader = { ...propsSample, showHeaders: false };
 
   it('Orderbook should not display Headers when showHeaders is false', () => {
     const renderedOutput = render(<OrderBook {...propsWithNoHeader} />);
@@ -66,9 +64,7 @@ describe('<OrderBook />', () => {
     expect(renderedOutput.queryByText('Bid')).not.toBeInTheDocument();
   });
 
-  const propsWithNoSpread = { ...propsSample };
-
-  propsWithNoSpread.showSpread = false;
+  const propsWithNoSpread = { ...propsSample, showSpread: false };
 
   it('Orderbook should not display Spread when showSpread is false', () => {
     const renderedOutput = render(<OrderBook {...propsWithNoSpread} />);
@@ -76,9 +72,7 @@ describe('<OrderBook />', () => {
     expect(renderedOutput.queryByText('Spread')).not.toBeInTheDocument();
   });
 
-  const propsWithSpreadValue = { ...propsSample };
-
-  propsWithSpreadValue.spread = 'Hello123';
+  const propsWithSpreadValue = { ...propsSample, spread: 'Hello123' };
 
   it('Orderbook should show spread that is given as input arg when showSpread is true', () => {
     const renderedOutput = render(<OrderBook {...propsWithSpreadValue} />);
@@ -86,9 +80,7 @@ describe('<OrderBook />', () => {
     expect(renderedOutput.queryByText('Hello123')).toBeInTheDocument();
   });
 
-  const propsWithApplyBackgroundColorValue = { ...propsSample };
-
-  propsWithApplyBackgroundColorValue.applyBackgroundColor = true;
+  const propsWithApplyBackgroundColorValue = { ...propsSample, applyBackgroundColor: true };
 
   it('Orderbook should apply color when applyBackgroundColor is true', () => {
     const renderedOutput = render(<OrderBook {...propsWithApplyBackgroundColorValue} />);
@@ -96,9 +88,7 @@ describe('<OrderBook />', () => {
     expect(renderedOutput.queryAllByRole('listitem')[0].style.backgroundColor).toBeDefined();
   });
 
-  const propsWithNoApplyBackgroundColorValue = { ...propsSample };
-
-  propsWithNoApplyBackgroundColorValue.applyBackgroundColor = false;
+  const propsWithNoApplyBackgroundColorValue = { ...propsSample, applyBackgroundColor: false };
 
   it('Orderbook should not apply color when applyBackgroundColor is false', () => {
     const renderedOutput = render(<OrderBook {...propsWithNoApplyBackgroundColorValue} />);
@@ -106,11 +96,7 @@ describe('<OrderBook />', () => {
     expect(renderedOutput.queryAllByRole('listitem')[0].style.backgroundColor).toEqual('');
   });
 
-  const propsWithOpacity = { ...propsSample };
-
-  propsWithOpacity.applyBackgroundColor = true;
-
-  propsWithOpacity.fullOpacity = true;
+  const propsWithOpacity = { ...propsSample, applyBackgroundColor: true, fullOpacity: true };
 
   it('Orderbook color testing for list items with opacity', () => {
     const expectedRGB = 'rgb(235, 64, 52)';
@@ -126,9 +112,7 @@ describe('<OrderBook />', () => {
     expect(renderedOutput.queryAllByRole('listitem').length).toEqual(4);
   });
 
-  const propsWithListLength = { ...propsSample };
-
-  propsWithListLength.listLength = 4;
+  const propsWithListLength = { ...propsSample, listLength: 4 };
 
   it('Testing no of bids and asks that are displayed based on list length', () => {
     const renderedOutput = render(<OrderBook {...propsWithListLength} />);
