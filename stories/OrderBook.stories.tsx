@@ -58,6 +58,10 @@ const Template: Story<Props> = (args) => {
 
 export const Default = Template.bind({});
 
+Default.args = {
+  book: { bids: preparedBids, asks: preparedAsks },
+};
+
 // export const StreamingData = () => {
 //   return <OrderBook book={{ bids: book.bids, asks: book.asks }} />;
 // };
