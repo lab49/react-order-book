@@ -32,17 +32,17 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-    
-      - name: install deps 
+      - name: Install deps 
         run: npm ci
-      - name: build project
+      - name: Build project
         run: npm run build --if-present
-      - name: lint
+      - name: Lint
         run: npm run lint
-      - name: types
+      - name: Types
         run: npm run types
-      - name: chromatic
+      - name: Chromatic
         run: npm run chromatic -- --exit-zero-on-changes
-      - name: test
+      - name: Test
         run: npm run test -- --coverage
-      - name: post coverage
+      - name: Post coverage
         run: bash <(curl -s https://codecov.io/bash) -f ./coverage/coverage-final.json
