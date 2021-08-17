@@ -33,6 +33,8 @@
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "storybook": "start-storybook -p 9009",
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "types": "tsc --noEmit"
   },
   "husky": {
@@ -72,6 +74,7 @@
     "@types/node": "^12.12.38",
     "@types/react": "^16.9.27",
     "@types/react-dom": "^16.9.7",
+    "@types/testing-library__jest-dom": "^5.14.1",
     "@typescript-eslint/eslint-plugin": "^3.8.0",
     "@typescript-eslint/parser": "^2.34.0",
     "babel-eslint": "^10.0.3",
