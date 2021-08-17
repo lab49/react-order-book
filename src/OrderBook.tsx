@@ -120,7 +120,12 @@ const renderList = (
         };
 
         return (
-          <li className={`${stylePrefix}__list-item`} key={price} style={rowStyle}>
+          <li
+            className={`${stylePrefix}__list-item`}
+            data-testid={price}
+            key={price}
+            style={rowStyle}
+          >
             <span className={`${stylePrefix}__price`}>{price}</span>
 
             <span className={`${stylePrefix}__size`}>{size}</span>

@@ -20,7 +20,7 @@ const book = {
     ['116564761.90', '1.50651300'],
   ],
 };
-const propsSample: Props = {
+const defaultProps: Props = {
   applyBackgroundColor: false,
   askColor: [235, 64, 52],
   bidColor: [0, 216, 101],
@@ -37,25 +37,25 @@ const propsSample: Props = {
 
 describe('<OrderBook functionality with different properties/>', () => {
   it('OrderBook should be rendered', () => {
-    const { getByText } = render(<OrderBook {...propsSample} />);
+    const { getByText } = render(<OrderBook {...defaultProps} />);
 
     expect(getByText('Ask')).toBeInTheDocument();
   });
 
   it('Orderbook should display Spread when showSpread is true', () => {
-    const renderedOutput = render(<OrderBook {...propsSample} />);
+    const renderedOutput = render(<OrderBook {...defaultProps} />);
 
     expect(renderedOutput.queryByText('Spread')).toBeInTheDocument();
   });
 
   it('Orderbook should display Headers when showHeaders is true', () => {
-    const renderedOutput = render(<OrderBook {...propsSample} />);
+    const renderedOutput = render(<OrderBook {...defaultProps} />);
 
     expect(renderedOutput.queryByText('Ask')).toBeInTheDocument();
     expect(renderedOutput.queryByText('Bid')).toBeInTheDocument();
   });
 
-  const propsWithNoHeader = { ...propsSample, showHeaders: false };
+  const propsWithNoHeader = { ...defaultProps, showHeaders: false };
 
   it('Orderbook should not display Headers when showHeaders is false', () => {
     const renderedOutput = render(<OrderBook {...propsWithNoHeader} />);
@@ -64,7 +64,7 @@ describe('<OrderBook functionality with different properties/>', () => {
     expect(renderedOutput.queryByText('Bid')).not.toBeInTheDocument();
   });
 
-  const propsWithNoSpread = { ...propsSample, showSpread: false };
+  const propsWithNoSpread = { ...defaultProps, showSpread: false };
 
   it('Orderbook should not display Spread when showSpread is false', () => {
     const renderedOutput = render(<OrderBook {...propsWithNoSpread} />);
@@ -72,7 +72,7 @@ describe('<OrderBook functionality with different properties/>', () => {
     expect(renderedOutput.queryByText('Spread')).not.toBeInTheDocument();
   });
 
-  const propsWithSpreadValue = { ...propsSample, spread: 'Hello123' };
+  const propsWithSpreadValue = { ...defaultProps, spread: 'Hello123' };
 
   it('Orderbook should show spread that is given as input arg when showSpread is true', () => {
     const renderedOutput = render(<OrderBook {...propsWithSpreadValue} />);
@@ -80,7 +80,7 @@ describe('<OrderBook functionality with different properties/>', () => {
     expect(renderedOutput.queryByText('Hello123')).toBeInTheDocument();
   });
 
-  const propsWithApplyBackgroundColorValue = { ...propsSample, applyBackgroundColor: true };
+  const propsWithApplyBackgroundColorValue = { ...defaultProps, applyBackgroundColor: true };
 
   it('Orderbook should apply color when applyBackgroundColor is true', () => {
     const renderedOutput = render(<OrderBook {...propsWithApplyBackgroundColorValue} />);
@@ -88,7 +88,7 @@ describe('<OrderBook functionality with different properties/>', () => {
     expect(renderedOutput.queryAllByRole('listitem')[0].style.backgroundColor).toBeDefined();
   });
 
-  const propsWithNoApplyBackgroundColorValue = { ...propsSample, applyBackgroundColor: false };
+  const propsWithNoApplyBackgroundColorValue = { ...defaultProps, applyBackgroundColor: false };
 
   it('Orderbook should not apply color when applyBackgroundColor is false', () => {
     const renderedOutput = render(<OrderBook {...propsWithNoApplyBackgroundColorValue} />);
@@ -96,7 +96,7 @@ describe('<OrderBook functionality with different properties/>', () => {
     expect(renderedOutput.queryAllByRole('listitem')[0].style.backgroundColor).toEqual('');
   });
 
-  const propsWithOpacity = { ...propsSample, applyBackgroundColor: true, fullOpacity: true };
+  const propsWithOpacity = { ...defaultProps, applyBackgroundColor: true, fullOpacity: true };
 
   it('Orderbook color testing for list items with opacity', () => {
     const expectedRGB = 'rgb(235, 64, 52)';
@@ -106,23 +106,33 @@ describe('<OrderBook functionality with different properties/>', () => {
     expect(renderedOutput.queryAllByRole('listitem')[2].style.backgroundColor).toEqual(expectedRGB);
   });
 
-  it('Testing no of bids and asks that are displayed', () => {
-    const renderedOutput = render(<OrderBook {...propsSample} />);
+  it('Testing number of bids and asks that are displayed', () => {
+    const renderedOutput = render(<OrderBook {...defaultProps} />);
 
     expect(renderedOutput.queryAllByRole('listitem').length).toEqual(4);
   });
 
-  const propsWithListLength = { ...propsSample, listLength: 4 };
+  const propsWithListLength = { ...defaultProps, listLength: 4 };
 
-  it('Testing no of bids and asks that are displayed based on list length', () => {
+  it('Testing number of bids and asks that are displayed based on list length', () => {
     const renderedOutput = render(<OrderBook {...propsWithListLength} />);
 
     expect(renderedOutput.queryAllByRole('listitem').length).toEqual(8);
   });
 
-  it('Testing no of ordered lists (bids and asks) that are displayed', () => {
-    const renderedOutput = render(<OrderBook {...propsSample} />);
+  it('Testing number of ordered lists (bids and asks) that are displayed', () => {
+    const renderedOutput = render(<OrderBook {...defaultProps} />);
 
     expect(renderedOutput.queryAllByRole('list').length).toEqual(2);
+  });
+
+  it('Testing interpolateColor default function', () => {
+    const noColorProps = { ...defaultProps, interpolateColor: undefined };
+    const renderedOutput = render(<OrderBook {...noColorProps} />);
+
+    expect(renderedOutput.getByTestId('1166441.89')).toHaveStyle(`--row-color: rgba(235,64,52, 1)`);
+    expect(renderedOutput.getByTestId('11676661.90')).toHaveStyle(
+      `--row-color: rgba(255,255,255, 0)`,
+    );
   });
 });
