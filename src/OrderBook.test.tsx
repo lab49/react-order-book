@@ -130,9 +130,8 @@ describe('<OrderBook functionality with different properties/>', () => {
     const noColorProps = { ...defaultProps, interpolateColor: undefined };
     const renderedOutput = render(<OrderBook {...noColorProps} />);
 
-    expect(renderedOutput.getByTestId('1166441.89')).toHaveStyle(`--row-color: rgba(235,64,52, 1)`);
-    expect(renderedOutput.getByTestId('11676661.90')).toHaveStyle(
-      `--row-color: rgba(255,255,255, 0)`,
-    );
+    const listItems = renderedOutput.queryAllByRole('listitem');
+    expect(listItems[0]).toHaveStyle(`--row-color: rgba(235,64,52, 1)`);
+    expect(listItems[listItems.length - 1]).toHaveStyle(`--row-color: rgba(255,255,255, git 0)`);
   });
 });
