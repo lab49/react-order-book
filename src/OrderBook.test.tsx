@@ -132,6 +132,6 @@ describe('<OrderBook functionality with different properties/>', () => {
 
     const listItems = renderedOutput.queryAllByRole('listitem');
     expect(listItems[0]).toHaveStyle(`--row-color: rgba(235,64,52, 1)`);
-    expect(listItems[listItems.length - 1]).toHaveStyle(`--row-color: rgba(255,255,255, git 0)`);
+    expect(listItems[listItems.length - 1]).toHaveStyle(`--row-color: rgba(255,255,255, 0)`);
   });
 });
