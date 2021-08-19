@@ -1,6 +1,6 @@
 # @lab49/react-order-book
 
-[![codecov](https://codecov.io/gh/lab49/react-order-book/branch/master/graph/badge.svg)](https://codecov.io/gh/lab49/react-order-book) [![CircleCI](https://circleci.com/gh/lab49/react-order-book.svg?style=svg)](https://circleci.com/gh/lab49/react-order-book) [![npm version](https://img.shields.io/npm/v/@lab49/react-order-book?label=version&color=%2354C536&logo=npm)](https://www.npmjs.com/package/@lab49/react-order-book)
+[![codecov](https://codecov.io/gh/lab49/react-order-book/branch/master/graph/badge.svg)](https://codecov.io/gh/lab49/react-order-book) [![Node.js CI](https://github.com/lab49/react-order-book/actions/workflows/CI.yaml/badge.svg)](https://github.com/lab49/react-order-book/actions/workflows/CI.yaml) [![npm version](https://img.shields.io/npm/v/@lab49/react-order-book?label=version&color=%2354C536&logo=npm)](https://www.npmjs.com/package/@lab49/react-order-book)
 
 <h3>&nbsp;</h3>
 <p align="center">
