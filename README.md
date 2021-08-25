@@ -40,7 +40,7 @@ This component is perfect for:
 
 ## Demo
 
-Hosted demo: [https://react-order-book.netlify.com/](https://react-order-book.netlify.com/)
+Hosted demo: [https://master--5f4988473b6fd20022f12dcc.chromatic.com](https://<branch>--5f4988473b6fd20022f12dcc.chromatic.com)
 
 You can also run the demo locally. To get started:
 
