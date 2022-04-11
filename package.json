@@ -1,6 +1,6 @@
 {
   "name": "@lab49/react-order-book",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Render an order book for any asset class. Flexible and customizable.",
   "author": "brianmcallister",
   "license": "MIT",
