@@ -1,6 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, Meta } from '@storybook/react';
 
 import { OrderBook, Props, Layout } from '../src/OrderBook';
 import pkg from '../package.json';
@@ -23,8 +23,14 @@ export default {
         max: 20,
       },
     },
-    // askColor: { control: 'color' },
-    // bidColor: { control: 'color' },
+    askColor: {
+      control: 'color',
+      defaultValue: 'rgba(235, 64, 52)',
+    },
+    bidColor: {
+      control: 'color',
+      defaultValue: 'rgba(0, 216, 101)',
+    },
   },
 } as Meta;
 
@@ -44,12 +50,13 @@ const parseColor = (color: string | number[]) => {
 };
 
 const Template: Story<Props> = (args) => {
+  const { askColor, bidColor } = args;
   const props = {
     listLength: 10,
     ...args,
     // Parse the color args.
-    askColor: parseColor(args.askColor),
-    bidColor: parseColor(args.bidColor),
+    askColor: parseColor(askColor),
+    bidColor: parseColor(bidColor),
   };
 
   // eslint-disable-next-line react/jsx-props-no-spreading

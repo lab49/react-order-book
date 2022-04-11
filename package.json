@@ -51,9 +51,12 @@
     ]
   },
   "peerDependencies": {
-    "react": "^16.x",
     "big.js": "^5.x",
-    "classnames": "^2.x"
+    "classnames": "^2.x",
+    "react": "^16.x"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.15.0",
@@ -96,6 +99,7 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "husky": "^4.3.8",
     "jest": "^26.4.2",
+    "jest-environment-jsdom": "^27.5.1",
     "lint-staged": "^10.5.4",
     "microbundle-crl": "^0.13.11",
     "prettier": "^2.0.4",
