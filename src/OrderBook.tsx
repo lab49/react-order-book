@@ -17,8 +17,15 @@ interface OrderBook {
   bids: PriceList;
 }
 
+type OptionalKeys<T> = {
+  [K in keyof T]-?: {} extends { [P in K]: T[K] } ? K : never;
+}[keyof T];
+
+type ExcludeRequiredProps<T> = Pick<T, OptionalKeys<T>>;
+
 export enum Layout {
   Row = 'row',
+  Column = 'column',
 }
 
 export interface Props {
@@ -72,12 +79,6 @@ export interface Props {
   stylePrefix?: string;
 }
 
-type RenderListOptions = Pick<Props, 'applyBackgroundColor' | 'fullOpacity' | 'stylePrefix'> & {
-  interpolateColor: NonNullable<Props['interpolateColor']>;
-  color: RgbColor;
-  reverse?: boolean;
-};
-
 /**
  * Interpolate two colors.
  *
@@ -88,6 +89,29 @@ const interpolateColor = (
   end: RenderListOptions['color'],
   factor: number = 0.5,
 ) => start.map((color, index) => Math.round(color + factor * (end[index] - start[index])));
+
+/**
+ * Default props.
+ */
+const defaultProps: Omit<Required<ExcludeRequiredProps<Props>>, 'spread'> & { spread?: string } = {
+  applyBackgroundColor: false,
+  askColor: [235, 64, 52],
+  bidColor: [0, 216, 101],
+  fullOpacity: false,
+  interpolateColor,
+  layout: Layout.Column,
+  listLength: 10,
+  showHeaders: false,
+  showSpread: true,
+  spread: undefined,
+  stylePrefix: 'rob_OrderBook',
+};
+
+type RenderListOptions = Pick<Props, 'applyBackgroundColor' | 'fullOpacity' | 'stylePrefix'> & {
+  interpolateColor: NonNullable<Props['interpolateColor']>;
+  color: RgbColor;
+  reverse?: boolean;
+};
 
 /**
  * Render a list representing one side of an order book.
@@ -105,7 +129,7 @@ const renderList = (
 ) => {
   const style = {
     display: 'flex',
-    flexDirection: reverse ? ('column-reverse' as const) : ('column' as const),
+    flexDirection: reverse ? 'column-reverse' : 'column',
   };
 
   return (
@@ -151,20 +175,20 @@ const renderList = (
  * - Order entry systems
  * - Dashboards
  */
-export const OrderBook = ({
+export const OrderBook: React.FC<Props> = ({
   applyBackgroundColor,
-  askColor = [235, 64, 52],
-  bidColor = [0, 216, 101],
+  askColor,
+  bidColor,
   book,
   fullOpacity,
-  interpolateColor: interpolateColorProp = interpolateColor,
+  interpolateColor: interpolateColorProp,
   layout,
   listLength,
   showHeaders,
-  showSpread = true,
+  showSpread,
   spread: rawSpread,
-  stylePrefix = 'rob_OrderBook',
-}: Props) => {
+  stylePrefix,
+}) => {
   const { bids, asks } = book;
   const spread = rawSpread ?? new Big(asks[0][0]).minus(new Big(bids[0][0])).toString();
   const cls = classnames(stylePrefix);
@@ -182,9 +206,9 @@ export const OrderBook = ({
         {showHeaders && <p className={`${stylePrefix}__side-header`}>Ask</p>}
         {renderList(limitedAsks, {
           applyBackgroundColor,
-          color: askColor,
+          color: askColor ?? defaultProps.askColor,
           fullOpacity,
-          interpolateColor: interpolateColorProp,
+          interpolateColor: interpolateColorProp ?? interpolateColor,
           reverse,
           stylePrefix,
         })}
@@ -201,12 +225,14 @@ export const OrderBook = ({
         {showHeaders && <p className={`${stylePrefix}__side-header`}>Bid</p>}
         {renderList(limitedBids, {
           applyBackgroundColor,
-          color: bidColor,
+          color: bidColor ?? defaultProps.bidColor,
           fullOpacity,
-          interpolateColor: interpolateColorProp,
+          interpolateColor: interpolateColorProp ?? interpolateColor,
           stylePrefix,
         })}
       </div>
     </div>
   );
 };
+
+OrderBook.defaultProps = defaultProps;
