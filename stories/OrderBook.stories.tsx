@@ -163,8 +163,8 @@ export const WithCustomColors = Template.bind({});
 
 WithCustomColors.args = {
   applyBackgroundColor: true,
-  askColor: [255, 255, 0],
-  bidColor: [0, 255, 255],
+  askColor: 'rgba(255, 255, 0)',
+  bidColor: 'rgba(0, 255, 255)',
 };
 
 export const WritingCustomStyles = () => {

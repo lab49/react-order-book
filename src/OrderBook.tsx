@@ -1,5 +1,4 @@
 import Big from 'big.js';
-import classnames from 'classnames';
 import React from 'react';
 
 type PriceList = string[][];
@@ -12,7 +11,7 @@ type Interpolator = (
   factor: number,
 ) => RgbColor;
 
-interface OrderBook {
+interface OrderBookStructure {
   asks: PriceList;
   bids: PriceList;
 }
@@ -44,7 +43,7 @@ export interface Props {
   /**
    * Order book object.
    */
-  book: OrderBook;
+  book: OrderBookStructure;
   /**
    * Use a value of 1 for the opacity of each row's generated color.
    */
@@ -191,7 +190,6 @@ export const OrderBook: React.FC<Props> = ({
 }) => {
   const { bids, asks } = book;
   const spread = rawSpread ?? new Big(asks[0][0]).minus(new Big(bids[0][0])).toString();
-  const cls = classnames(stylePrefix);
   const limitedAsks = asks.slice(0, listLength);
   const limitedBids = bids.slice(0, listLength);
   const reverse = layout !== Layout.Row;
@@ -201,7 +199,7 @@ export const OrderBook: React.FC<Props> = ({
   };
 
   return (
-    <div style={style} className={cls}>
+    <div style={style} className={stylePrefix}>
       <div className={`${stylePrefix}__side ${stylePrefix}__side--asks`}>
         {showHeaders && <p className={`${stylePrefix}__side-header`}>Ask</p>}
         {renderList(limitedAsks, {
