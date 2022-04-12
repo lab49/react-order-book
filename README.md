@@ -10,6 +10,8 @@
 </p>
 <h3>&nbsp;</h3>
 
+![react-order-book](https://user-images.githubusercontent.com/63244584/163017603-11089e79-9ec9-4b3e-8d09-086e62f32e94.gif)
+
 `react-order-book` is a simple, flexible order book component. Pass in an order book as a prop, and cutomize the look and feel with plenty of configuration options, plus numerous styling hooks for visual customization.
 
 `react-order-book` tries to be extremely unopinionated about styling, and as such, includes very little actual style rules. There's plenty of examples in the included demo website that show how you can use the rendered class names to create your own beautiful experiences.
