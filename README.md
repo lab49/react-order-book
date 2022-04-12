@@ -1,6 +1,6 @@
 # @lab49/react-order-book
 
-[![codecov](https://codecov.io/gh/lab49/react-order-book/branch/master/graph/badge.svg)](https://codecov.io/gh/lab49/react-order-book) [![Node.js CI](https://github.com/lab49/react-order-book/actions/workflows/CI.yaml/badge.svg)](https://github.com/lab49/react-order-book/actions/workflows/CI.yaml) [![npm version](https://img.shields.io/npm/v/@lab49/react-order-book?label=version&color=%2354C536&logo=npm)](https://www.npmjs.com/package/@lab49/react-order-book)
+[![codecov](https://codecov.io/gh/lab49/react-order-book/branch/master/graph/badge.svg)](https://codecov.io/gh/lab49/react-order-book) [![.github/workflows/cicd.yaml](https://github.com/lab49/react-order-book/actions/workflows/cicd.yaml/badge.svg)](https://github.com/lab49/react-order-book/actions/workflows/cicd.yaml) [![npm version](https://img.shields.io/npm/v/@lab49/react-order-book?label=version&color=%2354C536&logo=npm)](https://www.npmjs.com/package/@lab49/react-order-book)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
 <h3>&nbsp;</h3>
