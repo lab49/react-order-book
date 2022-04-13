@@ -11,6 +11,8 @@ Please check only the relevant items of this ticket.
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] This change requires a documentation update
+- [ ] Documentation (adds/edits current documentation)
+- [ ] Build (changes the build process)
 
 # How Has This Been Tested?
 
