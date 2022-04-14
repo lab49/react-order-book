@@ -1,18 +1,19 @@
 # (Prefix-TicketNumber) : Title of the pull request with ticket number
 
+## Type of Change (select one of the following)
+
+- feature: a new feature
+- fix: a bug fix
+- docs: documentation only changes
+- style: changes that do not affect the meaning of the code (white-space, formatting, code linting, etc)
+- refactor: a code change that neither fixes a bug or adds a feature
+- performance: a code that improves performance
+- test: add missing test to the codebase
+- chore: changes to the build process, auxiliary tools, and libraries such as documentation generation
+
 ## Description
+
 Please write here the description of the pull request.
-
-## Type of change
-
-Please check only the relevant items of this ticket.
-
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
-- [ ] Documentation (adds/edits current documentation)
-- [ ] Build (changes the build process)
 
 # How Has This Been Tested?
 
