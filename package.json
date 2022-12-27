@@ -18,19 +18,19 @@
     "javascript",
     "typescript"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.modern.js",
+  "main": "dist/OrderBook.js",
+  "module": "dist/OrderBook.mjs",
   "source": "src/OrderBook.tsx",
   "files": [
     "dist"
   ],
   "scripts": {
     "build-storybook": "build-storybook",
-    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "build": "tsup src/OrderBook.tsx --dts --sourcemap --format esm,cjs,iife",
     "chromatic": "chromatic --project-token 60pcjug3hz",
     "lint": "eslint --ext ts,tsx src",
     "prepare": "npm run build && husky install",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "start": "tsup src/OrderBook.tsx --watch",
     "storybook": "start-storybook -p 9009",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -81,7 +81,6 @@
     "jest": "^27.5.1",
     "jest-environment-jsdom": "^27.5.1",
     "lint-staged": "^12.3.7",
-    "microbundle-crl": "^0.13.11",
     "prettier": "^2.6.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
