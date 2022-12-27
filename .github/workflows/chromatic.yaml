@@ -1,12 +1,17 @@
-on: push
+on:
+  push:
+    branches-ignore:
+      - dependabot/**
 
 jobs:
-  cicd:
+  chromatic:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Required to retrieve git history for Chromatic
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         env:
           cache-name: cache-node-modules
         with:
@@ -18,12 +23,8 @@ jobs:
             ${{ runner.os }}-
 
       - run: npm ci
-      - run: npm run lint
-      - run: npm run types
-      - run: |
-          npm run test -- --coverage
-          bash <(curl -s https://codecov.io/bash) -f ./coverage/coverage-final.json
-
-      - uses: JS-DevTools/npm-publish@v1
+      - uses: chromaui/action@v1
         with:
-          token: ${{ secrets.NPM_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitOnceUploaded: true
