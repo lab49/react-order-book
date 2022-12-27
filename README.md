@@ -198,22 +198,6 @@ MIT @ [Lab49](https://lab49.com)
 
 ###### [⇡ Top](#table-of-contents)
 
-## TODO
-
-These items are very high level right now. Further discussion and proper roadmap planning will happen in GitHub issues and projects.
-
-- [ ] Add unit tests.
-- [ ] Incorporate a CI process for publishing.
-- [ ] Add lint-staged to maintain quality.
-- [ ] Add a code of conduct.
-- [ ] Add a contributing guide.
-- [ ] Create a feature roadmap.
-- [ ] Expose functions to help add a price update into the order book. Something like `(book: Book, change: Change) => Book`, but possibly a class to maintain the book prices in a tree for efficient insert and deletes. See [bintrees](https://www.npmjs.com/package/bintrees), and the RBTree.
-- [ ] Expose an HOC to connect to some popular streaming APIs and immediately start rendering an `OrderBook`. Plus, expose various props to allow customization of the behavior for use with internal streaming APIs of various types (websocket, SSE, etc).
-- [ ] Allow for a custom end color during color interpolation.
-- [ ] Add renderer props for various parts of the component structure (e.g., `rowRenderer`).
-- [ ] Add formatters for price and size, allow custom formatting.
-
 ## Sponsored by Lab49
 
 <a href="https://lab49.com">
