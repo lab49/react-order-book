@@ -37,7 +37,6 @@ This component is perfect for:
 	- [`OrderBook`](#OrderBook)
   - [`Props`](#Props)
   - [`Layout`](#Layout)
-- [Extra](#extra)
 - [License](#License)
 - [TODO](#TODO)
 
@@ -183,12 +182,6 @@ enum Layout {
   Row = 'row'
 }
 ```
-
-###### [⇡ Top](#table-of-contents)
-
-## Extra
-
-This project was created with [create-react-library](https://github.com/transitive-bullshit/create-react-library).
 
 ###### [⇡ Top](#table-of-contents)
 
